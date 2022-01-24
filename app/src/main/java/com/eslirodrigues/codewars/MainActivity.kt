@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CodeWarsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Answer(weightedMean().toString())
+                    Answer(salaryIncreased().toString())
                 }
             }
         }
@@ -41,6 +41,34 @@ fun weightedMean() : Double {
     val media = ((inputA * pesoA) + (inputB * pesoB) + (inputC * pesoC)) / ( pesoA + pesoB + pesoC)
 
     val answer = media
+
+    return answer
+}
+
+
+// increases salary according to percentage
+fun increaseSalaryPercentage(percentage: Int, inputNumber: Double): Double = ((percentage * inputNumber) / 100) + inputNumber
+fun salaryIncreased() : Double {
+    val inputSalary = 1000.00
+    val answer: Double
+
+    when(inputSalary) {
+        in 0.00..400.00 -> {
+            answer = increaseSalaryPercentage(percentage = 15, inputNumber = inputSalary)
+        }
+        in 400.01..800.00 -> {
+            answer = increaseSalaryPercentage(percentage = 12, inputNumber = inputSalary)
+        }
+        in 800.01..1200.00 -> {
+            answer = increaseSalaryPercentage(percentage = 10, inputNumber = inputSalary)
+        }
+        in 1200.01..2000.00 -> {
+            answer = increaseSalaryPercentage(percentage = 7, inputNumber = inputSalary)
+        }
+        else -> {
+            answer = increaseSalaryPercentage(percentage = 4, inputNumber = inputSalary)
+        }
+    }
 
     return answer
 }
