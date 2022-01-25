@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.sp
 import com.eslirodrigues.codewars.ui.theme.CodeWarsTheme
+import java.text.DecimalFormat
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CodeWarsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Answer(salaryIncreased().toString())
+                    Answer(salaryIncreased())
                 }
             }
         }
@@ -47,12 +48,23 @@ fun weightedMean() : Double {
 
 
 // increases salary according to percentage
-fun increaseSalaryPercentage(percentage: Int, inputNumber: Double): Double = ((percentage * inputNumber) / 100) + inputNumber
-fun salaryIncreased() : Double {
-    val inputSalary = 1000.00
-    val answer: Double
+fun increaseSalaryPercentage(percentage: Int, inputNumber: Double) : String {
+    val newSalary = ((percentage * inputNumber) / 100) + inputNumber
+    val readjustment = (percentage * inputNumber) / 100
 
-    when(inputSalary) {
+    val df = DecimalFormat("0.00")
+
+    return """
+        New salary: ${df.format(newSalary)}
+        Gain readjustment: ${df.format(readjustment)}
+        In percentage: $percentage %
+    """.trimIndent()
+}
+fun salaryIncreased(): String {
+    val inputSalary = 1000.00
+    val answer: String
+
+    when (inputSalary) {
         in 0.00..400.00 -> {
             answer = increaseSalaryPercentage(percentage = 15, inputNumber = inputSalary)
         }
