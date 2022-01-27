@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CodeWarsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Answer(salaryIncreased())
+                    Answer(multiples().toString())
                 }
             }
         }
@@ -27,6 +27,29 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Answer(answer: String) {
     Text(text = answer, fontSize = 25.sp)
+}
+
+// Find sum of multiples of 3 and 5.
+fun multiples() : Int {
+    val input = 200 - 1
+    var numbers = 0
+
+    for (i in 1..input) {
+        if (i % 3 == 0 && i % 5 == 0){
+            numbers += i
+        } else if (i % 3 == 0) {
+            numbers += i
+        } else if (i % 5 == 0) {
+            numbers += i
+        }
+    }
+
+    val answer = numbers
+
+    return answer
+
+//    Better solution
+//    fun solution(number: Int) = (1 until number).filter { it % 3 == 0 || it % 5 == 0 }.sum()
 }
 
 // Find the arithmetic mean. A = peso 2, B = peso 3, C = peso 5. WeightedMean used for resolution
