@@ -7,9 +7,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.unit.sp
 import com.eslirodrigues.codewars.ui.theme.CodeWarsTheme
 import java.text.DecimalFormat
+import java.util.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CodeWarsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Answer(arrayMultiples3and5().joinToString())
+                    Answer(removeDashJoinWordsCapitalize().toString())
                 }
             }
         }
@@ -27,6 +30,26 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Answer(answer: String) {
     Text(text = answer, fontSize = 25.sp)
+}
+
+// Remove dash/underscore from words and join them and capitalize
+fun removeDashJoinWordsCapitalize(): String {
+    val input = "the_stealth_warrior"
+
+    val chars = mutableListOf("")
+
+    input.forEach { chars += it.toString() }
+
+    chars.forEachIndexed { index, s ->
+        if (s == "_" || s == "-") {
+            chars[index + 1] = chars[index + 1].uppercase()
+        }
+    }
+
+    return chars.joinToString().filter { it.isLetter() && !it.isWhitespace()}
+
+    // Better solution
+    // str.split("-", "_").mapIndexed { i, s -> if (i == 0) s else s.capitalize() }.joinToString("")
 }
 
 
