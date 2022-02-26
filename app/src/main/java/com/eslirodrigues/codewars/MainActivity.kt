@@ -7,12 +7,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.text.capitalize
-import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.unit.sp
 import com.eslirodrigues.codewars.ui.theme.CodeWarsTheme
 import java.text.DecimalFormat
-import java.util.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CodeWarsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Answer(removeDashJoinWordsCapitalize().toString())
+                    Answer(multiplicationTable().contentDeepToString())
                 }
             }
         }
@@ -30,6 +27,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Answer(answer: String) {
     Text(text = answer, fontSize = 25.sp)
+}
+
+// Return an array with multiples
+fun multiplicationTable() : Array<IntArray> {
+    val input = 3 + 1
+
+    val array = Array(input, init = { intArrayOf()})
+
+    for (values in 0 until input) {
+        array[values] = IntArray(input) { it * values}.copyOfRange(1, input)
+    }
+
+    return array.copyOfRange(1, array.size)
+
+    // Better solution
+    // fun multiplicationTable(size: Int) = Array(size) { x -> IntArray(size) { y -> (x + 1) * (y + 1) } }
 }
 
 // Remove dash/underscore from words and join them and capitalize
