@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CodeWarsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Answer(firstGapPrime())
+                    Answer(convertHexToDecRgb())
                 }
             }
         }
