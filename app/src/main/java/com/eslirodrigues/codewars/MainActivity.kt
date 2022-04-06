@@ -8,11 +8,10 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.sp
-import com.eslirodrigues.codewars.twentytwo.mar.*
-import com.eslirodrigues.codewars.twentytwo.feb.*
-import com.eslirodrigues.codewars.twentytwo.jan.*
+import com.eslirodrigues.codewars.twentytwo.april.bankPlanYLiving
+import com.eslirodrigues.codewars.twentytwo.april.filterArrayBirds
+import com.eslirodrigues.codewars.twentytwo.april.stringMaxReps
 import com.eslirodrigues.codewars.ui.theme.CodeWarsTheme
-import java.text.DecimalFormat
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CodeWarsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Answer(stringMaxReps())
+                    Answer(filterArrayBirds())
                 }
             }
         }

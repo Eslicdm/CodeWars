@@ -1,6 +1,4 @@
-package com.eslirodrigues.codewars.twentytwo.mar
-
-import android.util.Log
+package com.eslirodrigues.codewars.twentytwo.april
 
 // Return char max reps
 fun stringMaxReps(): String {
