@@ -8,9 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.sp
-import com.eslirodrigues.codewars.twentytwo.april.bankPlanYLiving
-import com.eslirodrigues.codewars.twentytwo.april.filterArrayBirds
-import com.eslirodrigues.codewars.twentytwo.april.stringMaxReps
+import com.eslirodrigues.codewars.twentytwo.april.*
 import com.eslirodrigues.codewars.ui.theme.CodeWarsTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CodeWarsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Answer(bankPlanYLiving())
+                    Answer(correctPathRemoveSide())
                 }
             }
         }
